@@ -1,0 +1,84 @@
+li {
+    display: inline;
+    text-decoration: none;
+    font-size: 24px;
+
+  }
+
+  .a{
+    background-color: #7845ca;
+  }
+
+  .title{
+    font-size: 44px;
+    text-decoration: none;
+    padding-left: 150px;
+    color: white;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+ }
+ .title:hover{
+  text-decoration: none;
+  color: aliceblue;
+ }
+
+  .b{
+  margin-top: 45px;
+  margin-left: 30px;
+   /* display: inline;  */
+   
+ } 
+
+ .c{
+  float: right;
+  margin-top: 200px;
+  margin-right: 250px;
+ }
+ 
+ #loginbutton
+ {
+  padding: 20px;
+  margin: 20px;
+
+  
+ }
+ /* .bc
+ {
+  padding: 20px;
+ }
+ .b,.c{
+  width: 50%;
+  float: left;
+  padding: 20px;
+  
+ } */
+
+
+.d{
+  margin-top: 600px;
+  background-color: #f2f2f2;
+  /* border: 2px solid orangered; */
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 200px;
+}
+
+.e{
+  font-size: 20px;
+}
+.f{
+  font-size: 20px;
+   background-color: rgb(202, 225, 223);
+   padding: 50px;
+   text-align: center;
+}
+.h{
+  padding: 100px;
+  text-align: center;
+  margin: 10px;
+}
+.button-33{
+  margin: 20px;
+}
+.fa-brands{
+  margin: 5px;
+}
