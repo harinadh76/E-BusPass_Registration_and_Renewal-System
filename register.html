@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>E-Bus Pass</title>
     <style>
         .one {
 
-            border: 9px solid #7845ca;
-            ;
+            border: 19px solid #163b55;
             margin: 1px;
             padding: 16px;
             background-color: #f2f2f2;
+            /* background-color: #02fee5; */
+            
         }
 
         input[type=text],
@@ -29,27 +30,24 @@
 
         input[type=submit] {
             width: 44%;
-            background-color: #7845ca;
-            color: white;
+            background-color: #163b55;
+            color: #02fee5;
             padding: 16px 20px;
             margin: 8px 0;
             border: none;
             border-radius: 53px;
             cursor: pointer;
+            font-size: large;
+            
         }
 
         input[type=submit]:hover {
-            background-color: #3c2c44;
+            background-color: #02fee5;
+            color: #163b55;
 
         }
 
-        .special:hover {
 
-            background-color: #7845ca;
-            text-decoration-color: calc();
-
-
-        }
 
         .special {
             font-size: 35px;
@@ -60,6 +58,24 @@
             padding: 100px;
         }
 
+        h3{
+            text-shadow: 0 0 10px #808080,
+                0 0 10px #808080,
+                0 0 20px #808080,
+                0 0 30px #808080,
+                0 0 40px #808080;
+        }
+
+        label{
+            color: #163b55;
+            font-size: 24px;
+        }
+
+        ::placeholder{
+            font-size: 16px;
+
+        }
+
         /*End of  animation*/
     </style>
 </head>
@@ -67,20 +83,20 @@
 <body>
     <div class="one">
         <h3 class="special">
-            <center>BUS REGISTERATION FORM</center>
+            <center>BUS REGISTRATION FORM</center>
         </h3>
-        <form action="/">
+        <form action="https://sheetdb.io/api/v1/0bifv2bgnbbs8" method="post" id="sheetdb-form">
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <input type="text" id="fname" name="data[firstname]" placeholder="Your name..">
             <br>
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <input type="text" id="lname" name="data[lastname]" placeholder="Your last name..">
             <br>
             <label for="rmum">Roll Number</label>
-            <input type="text" id="roll number" name="roll number" placeholder="Roll number">
+            <input type="text" id="roll number" name="data[roll number]" placeholder="Roll number">
             <br>
             <label for="Year">Year</label>
-            <select id="Year" name="Year">
+            <select id="Year" name="data[Year]">
                 <option value="SELECT ONE">SELECT ONE</option>
                 <option value="year1">1st year</option>
                 <option value="year2">2nd year</option>
@@ -89,7 +105,7 @@
             </select>
             <br>
             <label for="branch">Branch</label>
-            <select id="Branch" name="Branch">
+            <select id="Branch" name="data[Branch]">
                 <option value="SELECT ONE">SELECT ONE</option>
                 <option value="CSE">CSE</option>
                 <option value="CIVIL">CIVIL</option>
@@ -101,10 +117,10 @@
             </select>
             <br>
             <label for="num">Phone number</label>
-            <input type="text" id="Phone num" name="Phone num" placeholder="Phone num">
+            <input type="text" id="Phone num" name="data[Phone num]" placeholder="Phone num">
             <br>
             <label for="Route">Route</label>
-            <select id="Route" name="Route">
+            <select id="Route" name="data[Route]">
                 <option value="SELECT ONE">SELECT ONE</option>
                 <option value="Hanumanthawaka">Hanumanthawaka</option>
                 <option value="Seethamadhara">Seethamadhara</option>
@@ -116,7 +132,7 @@
             </select>
             <br>
             <label for="Bus number">Bus number</label>
-            <select id="Route" name="Route">
+            <select id="Route" name="data[Routee]">
                 <option value="SELECT ONE">SELECT ONE</option>
                 <option value="1">AP39-TC-2027</option>
                 <option value="2">AP31-TD-7090</option>
@@ -128,13 +144,30 @@
             </select>
             <br>
             <label for="lname">Address</label>
-            <input type="text" id="Adress" name="Adress" placeholder="Adress">
+            <input type="text" id="Adress" name="data[Adress]" placeholder="Adress">
             <br>
 
             <center><input type="submit" value="Submit"></center>
         </form>
 
     </div>
+
+    <script>
+        var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(document.getElementById("sheetdb-form")),
+            }).then(
+                response => response.json()
+            ).then((html) => {
+                // you can put any JS code here
+                // alert('success')
+                window.location.href = ("/registersuccess.html")
+            });
+        });
+    </script>
 
 </body>
 

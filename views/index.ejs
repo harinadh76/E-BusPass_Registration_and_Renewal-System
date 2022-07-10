@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Bus Pass</title>
+</head>
+
+
+<body>
+    
+
+    <% if(dataa !=null) { %>
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>Year </th>
+            <th>Branch</th>
+            <th>Email </th>
+            <th>Route </th>
+            <th>rollno</th>
+            <th>busno</th>
+        </tr>
+        <% dataa.forEach(async function(item){ %>
+        <tr>
+            <td><%= item.Name%></td>
+            <td><%= item.Year %></td>
+            <td><%= item.Branch%></td>
+            <td><%= item.Email %></td>
+            <td><%= item.Route%></td>
+            <td><%= item.rollno%></td>
+            <td><%= item.busno%></td>
+        </tr>
+
+       
+
+        <% }) %>
+        </table>
+        <% } %>
+
+      
+
+
+
+</body>
+</html>
