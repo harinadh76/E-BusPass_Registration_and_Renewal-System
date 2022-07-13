@@ -93,61 +93,70 @@ const ejs = require('ejs');
 
 // Mongoose code
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://ebus:hari@ac-6xmoinf-shard-00-00.zet193z.mongodb.net:27017,ac-6xmoinf-shard-00-01.zet193z.mongodb.net:27017,ac-6xmoinf-shard-00-02.zet193z.mongodb.net:27017/?ssl=true&replicaSet=atlas-q4r8l1-shard-0&authSource=admin&retryWrites=true&w=majority/ebus');
-var db=mongoose.connection;
+mongoose.connect("mongodb://ebus:hari@ac-6xmoinf-shard-00-00.zet193z.mongodb.net:27017,ac-6xmoinf-shard-00-01.zet193z.mongodb.net:27017,ac-6xmoinf-shard-00-02.zet193z.mongodb.net:27017/?ssl=true&replicaSet=atlas-q4r8l1-shard-0&authSource=admin&retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+var db = mongoose.connection;
 
 
 db.on('error', console.log.bind(console, "connection error"));
-db.once('open', function(callback){
+db.once('open', function (callback) {
     console.log("connection succeeded");
 })
 
 // Mongoose db end 
 const app = express();
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.set('view engine', 'ejs')
 
-app.get("/",(req,res)=>{
-    res.sendFile(__dirname+"/index.html")
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html")
 })
 
 
-app.get("/home", (req,res)=>{
-    res.sendFile(__dirname+"/index.html")
+app.get("/home", (req, res) => {
+    res.sendFile(__dirname + "/index.html")
 })
 
-app.get("/about", (req,res)=>{
-    res.sendFile(__dirname+"/about.html")
+app.get("/about", (req, res) => {
+    res.sendFile(__dirname + "/about.html")
 })
 
-app.get("/register",(req,res)=>{
-    res.sendFile(__dirname+"/register.html")
+app.get("/register", (req, res) => {
+    res.sendFile(__dirname + "/register.html")
 })
 
-app.get("/student",(req,res)=>{
-    res.sendFile(__dirname+"/student.html")
+app.get("/student", (req, res) => {
+    res.sendFile(__dirname + "/student.html")
 })
 
-app.get("/driver",(req,res)=>{
-    res.sendFile(__dirname+"/driver.html")
+app.get("/driver", (req, res) => {
+    res.sendFile(__dirname + "/driver.html")
 })
 
-app.get("/administratorData",(req,res)=>{
-    res.sendFile(__dirname+"/administratorData.html")
+app.get("/administratorData", (req, res) => {
+    res.sendFile(__dirname + "/administratorData.html")
 })
 
-app.get("/login",(req,res)=>{
-    res.sendFile(__dirname+"/login.html")
+app.get("/login", (req, res) => {
+    res.sendFile(__dirname + "/login.html")
 })
 
-app.get("/renew",(req,res)=>{
-    res.sendFile(__dirname+"/renew.html")
+app.get("/renew", (req, res) => {
+    res.sendFile(__dirname + "/renew.html")
+})
+
+app.get("/adminlogin", (req, res) => {
+    res.sendFile(__dirname + "/adminlogin.html")
 })
 //post code for mongoose , mongodb
 
-app.post("/submit",(req,res)=>{
+app.post("/submit", (req, res) => {
 
     // var fname = req.body.data[firstname];
     // var lname =req.body.data[lastname];
@@ -163,55 +172,55 @@ app.post("/submit",(req,res)=>{
         "Name": name,
         "Year": year,
         "Branch": branch,
-        "Email" : email,
-        "Route" : route,
-        "rollno" : Rollno,
-        "busno" : Busno
+        "Email": email,
+        "Route": route,
+        "rollno": Rollno,
+        "busno": Busno
     }
 
-    
 
 
 
-    db.collection('details').insertOne(data,function(err, collection){
+
+    db.collection('details').insertOne(data, function (err, collection) {
         if (err) throw err;
         console.log("Record inserted Successfully");
 
-       
-              
+
+
     });
-     res.redirect("/hello")
+    res.redirect("/");
 })
 
 
 var schema = new mongoose.Schema({
-    Name : String,
-    Year : String,
-    Branch : String,
-    Email : String,
-    Route : String,
-    rollno : String,
-    busno : String
+    Name: String,
+    Year: String,
+    Branch: String,
+    Email: String,
+    Route: String,
+    rollno: String,
+    busno: String
 })
 
-const details = mongoose.model('details',schema);
+const details = mongoose.model('details', schema);
 
-app.get("/hello",(req,res)=>{
-    details.find({},function(err,pass){
-        if(err){console.log(err);}
-        else{
-        res.render('index',{ dataa:pass})
-        // console.log(pass);
+app.get("/hello", (req, res) => {
+    details.find({}, function (err, pass) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('index', {
+                dataa: pass
+            })
+            // console.log(pass);
         }
     })
-    
+
 })
 
 
 
-app.listen(process.env.PORT || 3000,()=>{
+app.listen(process.env.PORT || 3000, () => {
     console.log("==> server is running on port 3000");
 })
-
-
-
