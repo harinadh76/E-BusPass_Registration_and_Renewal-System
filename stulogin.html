@@ -108,9 +108,9 @@
 <body class="text-center">
 
     <main class="form-signin w-100 m-auto">
-        <form action="/administratorData" name="f1" onsubmit="return fun()">
+        <form action="/student" name="f1" onsubmit="return fun()">
 
-            <h1 class="h3 mb-3 fw-normal">Login as admin</h1>
+            <h1 class="h3 mb-3 fw-normal">Login as student</h1>
 
             <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
@@ -133,7 +133,7 @@
             var name = document.f1.username.value;
             var pass = document.f1.password.value;
 
-            if (name == "admin" && pass == "welcome") {
+            if (name == "user" && pass == "welcome") {
                 return true;
             }
             else if(name == "prempk" && pass == "prempk7172"){

@@ -154,6 +154,19 @@ app.get("/renew", (req, res) => {
 app.get("/adminlogin", (req, res) => {
     res.sendFile(__dirname + "/adminlogin.html")
 })
+
+
+app.get("/studentlogin",(req,res)=>{
+    res.sendFile(__dirname+"/stulogin.html")
+})
+
+app.get("/registersuccess",(req,res)=>{
+    res.sendFile(__dirname+"/registersucess.html")
+})
+
+app.get("/payment",(req,res)=>{
+    res.sendFile(__dirname+"/payments.html")
+})
 //post code for mongoose , mongodb
 
 app.post("/submit", (req, res) => {
@@ -189,7 +202,7 @@ app.post("/submit", (req, res) => {
 
 
     });
-    res.redirect("/");
+    res.redirect("/payment");
 })
 
 
